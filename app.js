@@ -155,6 +155,9 @@ function removeFromStorage(el) {
 // load local storage
 function loadLocalStorage() {
   
+  // instantiate UI
+  let ui = new UI();
+  
   let list; // initiate list
   if(localStorage.getItem('list') === null) {
     list = [];
@@ -164,18 +167,7 @@ function loadLocalStorage() {
 
   list.forEach(function(el) {
     
-    // get book list
-    const bookList = document.getElementById('book-list');
-    // create table row
-    const row = document.createElement('tr');
-    // add content to table row
-    row.innerHTML = `<td>${el.title}</td>
-                     <td>${el.author}</td>
-                     <td>${el.isbn}</td>
-                     <td><a href="#" class="delete">X</a></td>
-                     `;
-    // append book to book list
-    bookList.appendChild(row);
+    ui.addToBookList(el);
     
   });
   
